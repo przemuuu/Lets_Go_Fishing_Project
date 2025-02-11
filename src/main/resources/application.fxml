@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.agh.to2.lets_go_fishing.controller.FlashcardsController">
+    <left>
+        <VBox prefHeight="400.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label alignment="CENTER" prefHeight="48.0" prefWidth="331.0" text="Let's go fishing!">
+                    <font>
+                        <Font name="System Bold Italic" size="36.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" prefHeight="8.0" prefWidth="306.0" text="Interactive flashcard creator">
+                    <font>
+                        <Font name="System Italic" size="12.0" />
+                    </font>
+                </Label>
+                <Separator prefHeight="29.0" prefWidth="303.0" />
+                <Label text="Select or enter a new language:" />
+            <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent;">
+              <items>
+                      <ChoiceBox fx:id="languageChoiceBox" onAction="#onLanguageChosen" />
+                      <TextField fx:id="newLanguageTextField" promptText="Enter new language" visible="false" />
+              </items>
+            </ToolBar>
+            <Separator layoutX="10.0" layoutY="80.0" prefHeight="29.0" prefWidth="303.0" />
+                <Label alignment="CENTER" prefHeight="2.0" prefWidth="299.0" text="Enter text from which you want to make flashcards:">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <TextArea fx:id="inputTextArea" prefHeight="185.0" prefWidth="291.0" />
+                <ToolBar cache="true" prefHeight="0.0" prefWidth="300.0" style="-fx-background-color: transparent">
+                    <items>
+                        <Label text="Import text from file:">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <Button fx:id="selectFileButton" mnemonicParsing="false" onAction="#onSelectFileClicked" text="Select file">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                            <tooltip>
+                                <Tooltip text="Supported extensions: .txt, .docx, .pdf" />
+                            </tooltip>
+                        </Button>
+
+                    </items>
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                </ToolBar>
+                <Separator prefHeight="35.0" prefWidth="303.0" />
+                <VBox alignment="CENTER" prefHeight="64.0" prefWidth="300.0">
+                    <children>
+                        <Button fx:id="createFlashcardsButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onCreateFlashcardsClicked" prefHeight="32.0" prefWidth="234.0" text="Create flashcards!" textAlignment="CENTER" textOverrun="CLIP">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </left>
+    <right>
+        <VBox prefHeight="400.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+            <children>
+                <VBox alignment="CENTER" prefHeight="53.0" prefWidth="303.0">
+                    <children>
+                        <Label text="Current word:">
+                            <font>
+                                <Font name="System Italic" size="27.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER" prefHeight="36.0" prefWidth="303.0">
+                    <children>
+                        <Label fx:id="currentWordLabel" text="word">
+                            <font>
+                                <Font size="26.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="20.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                </VBox>
+                <Separator prefWidth="304.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin></Separator>
+            <VBox fx:id="translationVBox" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                      <VBox alignment="CENTER" prefHeight="65.0" prefWidth="299.0">
+                          <children>
+                              <Label fx:id="yourTranslationLabel" text="Your translation:">
+                                  <font>
+                                      <Font name="System Italic" size="24.0" />
+                                  </font>
+                              </Label>
+                              <TextField fx:id="translatedTextField" prefHeight="37.0" prefWidth="302.0" />
+                          </children>
+                      </VBox>
+                  <Separator prefWidth="304.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="10.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent;">
+                    <items>
+                        <Label text="Part of speech:   " />
+                        <ChoiceBox fx:id="partOfSpeechChoiceBox" onAction="#onPartOfSpeechChosen" prefHeight="25.0" prefWidth="72.0" />
+                        <Label layoutX="10.0" layoutY="17.0" text="   " />
+                        <TextField fx:id="otherPartOfSpeechTextField" prefWidth="100.0" visible="false" />
+                    </items>
+                  </ToolBar>
+                  <Separator prefWidth="304.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="10.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent;">
+                    <items>
+                        <Label text="Basic form:  " />
+                        <TextField fx:id="basicFormTextField" prefHeight="25.0" prefWidth="106.0" />
+                        <Label layoutX="10.0" layoutY="17.0" text="  Already basic? " />
+                        <CheckBox fx:id="alreadyBasicFormCheckBox" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#onAlreadyBasicFormChecked" textAlignment="CENTER" />
+                    </items>
+                  </ToolBar>
+                  <Separator prefWidth="304.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="10.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent;">
+                     <items>
+                        <Label text="Transcription:  " />
+                        <TextField fx:id="transcriptionTextField" />
+                     </items>
+                  </ToolBar>
+                      <Separator prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="10.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent;">
+                     <items>
+                        <Label text="Part of a sentence:   " />
+                        <ChoiceBox fx:id="partOfSentenceChoiceBox" onAction="#onPartOfSentenceChosen" prefHeight="25.0" prefWidth="72.0" />
+                        <Label layoutX="10.0" layoutY="17.0" text="   " />
+                        <TextField fx:id="otherPartOfSentenceTextField" prefWidth="80.0" visible="false" />
+                     </items>
+                  </ToolBar>
+                  <Separator layoutX="10.0" layoutY="256.0" prefHeight="25.0" prefWidth="300.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Separator>
+               </children>
+            </VBox>
+                <VBox alignment="CENTER" prefHeight="65.0" prefWidth="298.0">
+                    <children>
+                        <Button fx:id="submitWordButton" mnemonicParsing="false" onAction="#onSubmitWordClicked" text="Submit word" textAlignment="CENTER">
+                            <font>
+                                <Font name="System Italic" size="18.0" />
+                            </font>
+                        </Button>
+                    </children>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </VBox>
+                <Separator prefHeight="17.0" prefWidth="299.0">
+               <VBox.margin>
+                  <Insets bottom="3.0" />
+               </VBox.margin>
+            </Separator>
+                <ToolBar fx:id="progressToolBar" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent">
+                    <items>
+                        <ProgressBar fx:id="translationProgressBar" prefHeight="18.0" prefWidth="178.0" progress="0.0" />
+                        <Label text="   " />
+                        <Label fx:id="progressLabel" text="0 / 0 - 0%">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                    </items>
+                </ToolBar>
+                <VBox fx:id="saveFlashcardsVBox" alignment="CENTER" prefHeight="48.0" prefWidth="300.0">
+                    <children>
+                  <Separator prefHeight="17.0" prefWidth="299.0">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Separator>
+                        <Button fx:id="saveFlashcardsButton" mnemonicParsing="false" onAction="#onSaveFlashcardsClicked" text="Save your flashcards to CSV">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                        </Button>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </right>
+    <center>
+        <Separator orientation="VERTICAL" prefHeight="722.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
+    </center>
+    <padding>
+        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+    </padding>
+</BorderPane>

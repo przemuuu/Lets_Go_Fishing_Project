@@ -59,9 +59,10 @@ The purpose of the application is to support the process of learning foreign lan
     </ul>
 </ul>
 
-## Data model class diagram [OUTDATED]
-![class_diagram](images/class_diagram_milestone2.png)
-
+## Data model class diagram
+![class_diagram_flashcard](images/class_diagram_milestone3_flashcard.png)
+![class_diagram_sentence](images/class_diagram_milestone3_sentence.png)
+![class_diagram_helper](images/class_diagram_milestone3_helper.png)
 ## Flow diagram
 [Available here](https://miro.com/app/board/uXjVL5kTpR8=/?share_link_id=809900169708)
 
